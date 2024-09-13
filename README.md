@@ -1,28 +1,21 @@
-Backend : https://github.com/Venkat5452/MyNewGameBackend
+Backend Repository:
+https://github.com/Venkat5452/MyNewGameBackend
 
-Deployed Link : https://numbergamereact.netlify.app/
+Deployed Application:
+https://numbergamereact.netlify.app/
 
+How to Fork:
 
-How to fork :
+Fork both the backend and frontend repositories using the available GitHub option.
+Install the required dependencies by running the following command in your terminal:
+npm i
+How to Use the Application:
 
-Fork using the option availbale from both the backend and frontend repos
+Signup using your email. An OTP will be sent to your email for verification.
+After successful verification, you'll be redirected to the login page. Log in using your credentials.
+If you've forgotten your credentials, you can use the Forgot Password feature.
+Once logged in, your name will appear on the top right corner of the dashboard, and your score will be displayed on the top left.
+You can access the Leaderboard feature from the navbar.
+Start playing the game! After guessing the number correctly, you'll see an appreciation page with a celebration, and then you'll be redirected to the dashboard to play again.
+Happy gaming!
 
-install the required dependencies
-
- example : npm i 
-
- How to use the application :
-
-Signup to the application using email , otp been sent to email for verification
-
-you can see the leaderboard feature availbale in the navbar
-
-after success full verification you will redirect to log in page and log using required credentials
-
-you can use forgotpassword feature if you forgot your credentials
-
-After successfull login , in the dashboard you can see your name on right top on the screen and your score in the left top
-
-you can start playing the game and once you guess the number you will get appreciated page with celebration then you will be redirected to dashboard again to play the game.
-
-happy gaming.
