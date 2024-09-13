@@ -4,10 +4,12 @@ import { useState,useEffect } from 'react';
 import { Form,Button } from 'react-bootstrap';
 import { MY_URL } from './Helper';
 import { useNavigate } from 'react-router-dom';
+import PasswordChecklist from "react-password-checklist";
 function Forgotpassword() {
     const [err,seterr]=useState("");
     const [sta,setsta]=useState("");
     const [flag,setflag]=useState(false);
+    const [flag1,setflag1]=useState(false);
     const navigate=useNavigate();
     const [user,setUser]=useState({
         email:"",
@@ -53,8 +55,7 @@ function Forgotpassword() {
         axios.post(MY_URL + "resetpassword",user).then((res)=>{
             if(res.data==="SuccessFull") {
                 setsta("");
-                localStorage.setItem("forregister",1);
-                navigate("/registered");
+                setflag1(true);
             }
             else {
                 seterr(res.data);
@@ -62,12 +63,28 @@ function Forgotpassword() {
             }
         })
     }
+    const resetpassword=(e)=>{
+      e.preventDefault();
+      setsta("1");
+      seterr("");
+      axios.post(MY_URL + "setpassword",user).then((res)=>{
+        if(res.data==="SuccessFull") {
+          setsta("");
+          localStorage.setItem("forregister",1);
+          navigate("/registered");
+      }
+      else {
+          seterr(res.data);
+          setsta("");
+      }
+      })
+    }
   return (
     <>
     <div className='text-center pt-5 forsign'>
         <div className='container'>
             <h3 className='pt-3'>Reset Your Password</h3>
-            {!flag && <div>
+            {!flag && !flag1 && <div>
             {err!=="" && <span className='text-danger'>{err}</span>}
             {sta!=="" && <span className='text-success'>Loading..</span>}
             <Form className='pp1 rounded rounded-5 pt-1' onSubmit={handleSubmit}>
@@ -88,7 +105,7 @@ function Forgotpassword() {
             </div>
             </Form>
             </div>}
-            {flag && <div>
+            {flag && !flag1 && <div>
         <h5 className='pt-1'>Enter OTP Sent to : </h5>
         <span>{user.email}</span> <br></br>
         {err!=="" && <span className='text-danger'>{err}</span>}
@@ -111,6 +128,34 @@ function Forgotpassword() {
             </div>
           </Form>
         </div>}
+        {
+          flag && flag1 && <div className='text-center pt-5'>
+            <Form className='pp1 rounded rounded-5 pt-1'>
+            <Form.Group>
+						<Form.Control 
+							type="password" 
+							placeholder="Enter Password"
+                            name="password"
+							onChange={handleChange}
+                            required
+						/>
+						<PasswordChecklist
+							rules={["minLength","specialChar","number","capital"]}
+							minLength={8}
+                            name="password"
+							value={user.password}
+							onChange={(isValid) => {}}
+                            required
+						/>
+					</Form.Group>
+            <div className="d-grid gap-2 m-2">
+              <Button variant="primary" type="submit" onClick={resetpassword}>
+                Reset Password
+              </Button>
+            </div>
+          </Form>
+          </div>
+        }
             <Button variant="danger" onClick={cancel}>
                 Cancel
             </Button>
