@@ -1,0 +1,20 @@
+.pp1{
+    min-width: 100px;
+    max-width: 400px;
+    margin: auto;
+}
+.pp2{
+    min-width: 100px;
+    max-width: 350px;
+    margin: auto;
+}
+.forsign{
+    height: 80vh;
+}
+.forregi{
+    margin: auto;
+    text-align: center;
+}
+.forlogin{
+    height: 80vh;
+}
