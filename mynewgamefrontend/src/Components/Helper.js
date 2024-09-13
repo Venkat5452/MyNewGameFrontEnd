@@ -1,1 +1,1 @@
-export const MY_URL="http://localhost:9006/";
+export const MY_URL="https://mynewgamebackend.onrender.com/";
